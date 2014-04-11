@@ -107,6 +107,10 @@
 - (void)invalidateLayoutIfNecessary {
     NSIndexPath *newIndexPath = [self.collectionView indexPathForItemAtPoint:self.currentView.center];
     NSIndexPath *previousIndexPath = self.selectedItemIndexPath;
+    if (newIndexPath == nil)
+    {
+        newIndexPath = [self indexPathForItemClosestToPoint:self.currentView.center orginalIndexPath:previousIndexPath];
+    }
     
     if ((newIndexPath == nil) || [newIndexPath isEqual:previousIndexPath]) {
         return;
@@ -228,7 +232,6 @@
     self.currentView.center = LXS_CGPointAdd(self.currentViewCenter, self.panTranslationInCollectionView);
     self.collectionView.contentOffset = LXS_CGPointAdd(contentOffset, translation);
 }
-
 
 - (void)handleLongPressGesture:(UILongPressGestureRecognizer *)gestureRecognizer {
     switch(gestureRecognizer.state) {
@@ -379,6 +382,78 @@
             // Do nothing...
         } break;
     }
+}
+
+#pragma mark - Target/Action helper methods
+
+- (NSIndexPath *)indexPathForItemClosestToPoint:(CGPoint)point orginalIndexPath:(NSIndexPath*)orginalIndexPath
+{
+    // We need original positions of cells
+    NSArray * layoutAttrsInRect = [self.collectionView.collectionViewLayout layoutAttributesForElementsInRect:self.collectionView.bounds];
+    
+    //test if draged object is beond the last object
+    //or below the last row then add move to last object
+    UICollectionViewLayoutAttributes *lastObjectAttributes = [layoutAttrsInRect lastObject];
+
+    CGFloat xd = lastObjectAttributes.center.x - point.x;
+    CGFloat yd = lastObjectAttributes.center.y - point.y;
+    if ((yd < 0 && xd < 0) || yd <= -lastObjectAttributes.frame.size.height)
+    {
+        return lastObjectAttributes.indexPath;
+    }
+    
+    NSInteger closestDist = NSIntegerMax;
+    NSIndexPath *indexPath;
+    //next two loops were taken from https://github.com/lukescott/DraggableCollectionView
+    // What cell are we closest to?
+    for (UICollectionViewLayoutAttributes *layoutAttr in layoutAttrsInRect)
+    {
+        xd = layoutAttr.center.x - point.x;
+        yd = layoutAttr.center.y - point.y;
+        NSInteger dist = sqrtf(xd * xd + yd * yd);
+        if (dist < closestDist)
+        {
+            closestDist = dist;
+            indexPath = layoutAttr.indexPath;
+        }
+    }
+    
+    // Are we closer to being the last cell in a different section?
+    NSInteger sections = [self.collectionView numberOfSections];
+    for (NSInteger i = 0; i < sections; ++i)
+    {
+        if (i == orginalIndexPath.section)
+        {
+            continue;
+        }
+        NSInteger items = [self.collectionView numberOfItemsInSection:i];
+        NSIndexPath *nextIndexPath = [NSIndexPath indexPathForItem:items inSection:i];
+        UICollectionViewLayoutAttributes *layoutAttr;
+        
+        if (items > 0)
+        {
+            layoutAttr = [self.collectionView.collectionViewLayout layoutAttributesForItemAtIndexPath:nextIndexPath];
+            xd = layoutAttr.center.x - point.x;
+            yd = layoutAttr.center.y - point.y;
+        }
+        else
+        {
+            // Trying to use layoutAttributesForItemAtIndexPath while section is empty causes EXC_ARITHMETIC (division by zero items)
+            // So we're going to ask for the header instead. It doesn't have to exist.
+            layoutAttr = [self.collectionView.collectionViewLayout layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                                                                                                  atIndexPath:nextIndexPath];
+            xd = layoutAttr.frame.origin.x - point.x;
+            yd = layoutAttr.frame.origin.y - point.y;
+        }
+        
+        NSInteger dist = sqrtf(xd*xd + yd*yd);
+        if (dist < closestDist)
+        {
+            closestDist = dist;
+            indexPath = layoutAttr.indexPath;
+        }
+    }
+    return indexPath;
 }
 
 #pragma mark - UICollectionViewLayout overridden methods

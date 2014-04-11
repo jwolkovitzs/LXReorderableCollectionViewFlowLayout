@@ -62,6 +62,9 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
 - (void)handleLongPressGesture:(UILongPressGestureRecognizer *)gestureRecognizer;
 - (void)handlePanGesture:(UIPanGestureRecognizer *)gestureRecognizer;
 
+#pragma mark - Target/Action helper methods
+- (NSIndexPath *)indexPathForItemClosestToPoint:(CGPoint)point orginalIndexPath:(NSIndexPath*)orginalIndexPath;
+
 #pragma mark - UICollectionViewLayout overridden methods
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect;
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath;
