@@ -26,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		45AFD69018F8362B0036EAB3 /* LXReorderableCollectionViewFlowLayoutPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LXReorderableCollectionViewFlowLayoutPrivate.h; path = ../LXReorderableCollectionViewFlowLayout/LXReorderableCollectionViewFlowLayoutPrivate.h; sourceTree = "<group>"; };
 		927A97F31736CA0E00539F5E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AB0E97C2161B4BEC005498A0 /* LXRCVFL Example using Storyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LXRCVFL Example using Storyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB0E97C6161B4BEC005498A0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -132,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				AB0E97F1161B52D4005498A0 /* LXReorderableCollectionViewFlowLayout.h */,
+				45AFD69018F8362B0036EAB3 /* LXReorderableCollectionViewFlowLayoutPrivate.h */,
 				AB0E97F2161B52D4005498A0 /* LXReorderableCollectionViewFlowLayout.m */,
 			);
 			name = Library;

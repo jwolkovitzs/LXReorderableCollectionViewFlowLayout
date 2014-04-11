@@ -36,6 +36,10 @@ Getting Started
 Changes
 ============
 
+### Apr 11 2014 (Jason Wolkovitz)
+
+- Added LXReorderableCollectionViewFlowLayoutPrivate.h to allow subclassing
+
 ### Feb 24 2013 (Luke Scott)
 
 - Removed setUpGestureRecognizersOnCollectionView

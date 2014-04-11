@@ -9,29 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <objc/runtime.h>
 
-#define LX_FRAMES_PER_SECOND 60.0
-
-#ifndef CGGEOMETRY_LXSUPPORT_H_
-CG_INLINE CGPoint
-LXS_CGPointAdd(CGPoint point1, CGPoint point2) {
-    return CGPointMake(point1.x + point2.x, point1.y + point2.y);
-}
-#endif
-
-typedef NS_ENUM(NSInteger, LXScrollingDirection) {
-    LXScrollingDirectionUnknown = 0,
-    LXScrollingDirectionUp,
-    LXScrollingDirectionDown,
-    LXScrollingDirectionLeft,
-    LXScrollingDirectionRight
-};
-
-static NSString * const kLXScrollingDirectionKey = @"LXScrollingDirection";
-static NSString * const kLXCollectionViewKeyPath = @"collectionView";
-
-@interface CADisplayLink (LX_userInfo)
-@property (nonatomic, copy) NSDictionary *LX_userInfo;
-@end
+#import "LXReorderableCollectionViewFlowLayoutPrivate.h"
 
 @implementation CADisplayLink (LX_userInfo)
 - (void) setLX_userInfo:(NSDictionary *) LX_userInfo {
@@ -43,11 +21,6 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
 }
 @end
 
-@interface UICollectionViewCell (LXReorderableCollectionViewFlowLayout)
-
-- (UIImage *)LX_rasterizedImage;
-
-@end
 
 @implementation UICollectionViewCell (LXReorderableCollectionViewFlowLayout)
 
@@ -61,18 +34,6 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
 
 @end
 
-@interface LXReorderableCollectionViewFlowLayout ()
-
-@property (strong, nonatomic) NSIndexPath *selectedItemIndexPath;
-@property (strong, nonatomic) UIView *currentView;
-@property (assign, nonatomic) CGPoint currentViewCenter;
-@property (assign, nonatomic) CGPoint panTranslationInCollectionView;
-@property (strong, nonatomic) CADisplayLink *displayLink;
-
-@property (assign, nonatomic, readonly) id<LXReorderableCollectionViewDataSource> dataSource;
-@property (assign, nonatomic, readonly) id<LXReorderableCollectionViewDelegateFlowLayout> delegate;
-
-@end
 
 @implementation LXReorderableCollectionViewFlowLayout
 
