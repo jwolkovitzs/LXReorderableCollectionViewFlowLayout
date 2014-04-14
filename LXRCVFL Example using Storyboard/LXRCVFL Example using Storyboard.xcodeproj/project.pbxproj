@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		450BFD4718FB124F008B32C6 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 450BFD4618FB124F008B32C6 /* Reveal.framework */; };
 		927A97F41736CA0E00539F5E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927A97F31736CA0E00539F5E /* QuartzCore.framework */; };
 		AB0E97C7161B4BEC005498A0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB0E97C6161B4BEC005498A0 /* UIKit.framework */; };
 		AB0E97C9161B4BEC005498A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB0E97C8161B4BEC005498A0 /* Foundation.framework */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		450BFD4618FB124F008B32C6 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		45AFD69018F8362B0036EAB3 /* LXReorderableCollectionViewFlowLayoutPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LXReorderableCollectionViewFlowLayoutPrivate.h; path = ../LXReorderableCollectionViewFlowLayout/LXReorderableCollectionViewFlowLayoutPrivate.h; sourceTree = "<group>"; };
 		927A97F31736CA0E00539F5E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AB0E97C2161B4BEC005498A0 /* LXRCVFL Example using Storyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LXRCVFL Example using Storyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,6 +62,7 @@
 			files = (
 				927A97F41736CA0E00539F5E /* QuartzCore.framework in Frameworks */,
 				AB0E97C7161B4BEC005498A0 /* UIKit.framework in Frameworks */,
+				450BFD4718FB124F008B32C6 /* Reveal.framework in Frameworks */,
 				AB0E97C9161B4BEC005498A0 /* Foundation.framework in Frameworks */,
 				AB0E97CB161B4BEC005498A0 /* CoreGraphics.framework in Frameworks */,
 			);
@@ -90,6 +93,7 @@
 		AB0E97C5161B4BEC005498A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				450BFD4618FB124F008B32C6 /* Reveal.framework */,
 				927A97F31736CA0E00539F5E /* QuartzCore.framework */,
 				AB0E97C6161B4BEC005498A0 /* UIKit.framework */,
 				AB0E97C8161B4BEC005498A0 /* Foundation.framework */,
@@ -294,6 +298,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LXRCVFL Example using Storyboard/LXRCVFL Example using Storyboard-Prefix.pch";
 				INFOPLIST_FILE = "LXRCVFL Example using Storyboard/LXRCVFL Example using Storyboard-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					Reveal,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
@@ -306,6 +316,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LXRCVFL Example using Storyboard/LXRCVFL Example using Storyboard-Prefix.pch";
 				INFOPLIST_FILE = "LXRCVFL Example using Storyboard/LXRCVFL Example using Storyboard-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					Reveal,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
