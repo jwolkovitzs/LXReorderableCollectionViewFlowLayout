@@ -44,14 +44,9 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
 @property (assign, nonatomic) CGPoint panTranslationInCollectionView;
 @property (strong, nonatomic) CADisplayLink *displayLink;
 
-@property (assign, nonatomic, readonly) id<LXReorderableCollectionViewDataSource> dataSource;
-@property (assign, nonatomic, readonly) id<LXReorderableCollectionViewDelegateFlowLayout> delegate;
-
 - (void)setDefaults;
 - (void)setupCollectionView;
 - (void)applyLayoutAttributes:(UICollectionViewLayoutAttributes *)layoutAttributes;
-- (id<LXReorderableCollectionViewDataSource>)dataSource;
-- (id<LXReorderableCollectionViewDelegateFlowLayout>)delegate;
 - (void)invalidateLayoutIfNecessary;
 - (void)invalidatesScrollTimer;
 - (void)setupScrollTimerInDirection:(LXScrollingDirection)direction;

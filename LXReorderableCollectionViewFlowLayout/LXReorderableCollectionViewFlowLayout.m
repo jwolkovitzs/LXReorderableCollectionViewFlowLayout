@@ -34,6 +34,15 @@
 
 @end
 
+@interface LXReorderableCollectionViewFlowLayout()
+
+@property (assign, nonatomic, readonly) id<LXReorderableCollectionViewDataSource> dataSource;
+@property (assign, nonatomic, readonly) id<LXReorderableCollectionViewDelegateFlowLayout> delegate;
+
+- (id<LXReorderableCollectionViewDataSource>)dataSource;
+- (id<LXReorderableCollectionViewDelegateFlowLayout>)delegate;
+
+@end
 
 @implementation LXReorderableCollectionViewFlowLayout
 
@@ -112,7 +121,7 @@
         newIndexPath = [self indexPathForItemClosestToPoint:self.currentView.center orginalIndexPath:previousIndexPath];
     }
     
-    if ((newIndexPath == nil) || [newIndexPath isEqual:previousIndexPath]) {
+    if ((newIndexPath == nil) || [newIndexPath isEqual:previousIndexPath] || previousIndexPath == nil) {
         return;
     }
     
@@ -231,6 +240,7 @@
     self.currentViewCenter = LXS_CGPointAdd(self.currentViewCenter, translation);
     self.currentView.center = LXS_CGPointAdd(self.currentViewCenter, self.panTranslationInCollectionView);
     self.collectionView.contentOffset = LXS_CGPointAdd(contentOffset, translation);
+    [self invalidatesScrollTimer];
 }
 
 - (void)handleLongPressGesture:(UILongPressGestureRecognizer *)gestureRecognizer {
