@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		450BFD4718FB124F008B32C6 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 450BFD4618FB124F008B32C6 /* Reveal.framework */; };
+		4552245D18FCAD5800AC0D5D /* defualtDeleteBotton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4552245618FCAD5800AC0D5D /* defualtDeleteBotton.png */; };
+		4552245E18FCAD5800AC0D5D /* SCUCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4552245818FCAD5800AC0D5D /* SCUCollectionViewController.m */; };
+		4552245F18FCAD5800AC0D5D /* SCUDefaultCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4552245A18FCAD5800AC0D5D /* SCUDefaultCollectionViewCell.m */; };
+		4552246018FCAD5800AC0D5D /* SCUReorderableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4552245C18FCAD5800AC0D5D /* SCUReorderableCollectionViewFlowLayout.m */; };
 		927A97F41736CA0E00539F5E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927A97F31736CA0E00539F5E /* QuartzCore.framework */; };
 		AB0E97C7161B4BEC005498A0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB0E97C6161B4BEC005498A0 /* UIKit.framework */; };
 		AB0E97C9161B4BEC005498A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB0E97C8161B4BEC005498A0 /* Foundation.framework */; };
@@ -28,6 +32,13 @@
 
 /* Begin PBXFileReference section */
 		450BFD4618FB124F008B32C6 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
+		4552245618FCAD5800AC0D5D /* defualtDeleteBotton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defualtDeleteBotton.png; sourceTree = "<group>"; };
+		4552245718FCAD5800AC0D5D /* SCUCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCUCollectionViewController.h; sourceTree = "<group>"; };
+		4552245818FCAD5800AC0D5D /* SCUCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCUCollectionViewController.m; sourceTree = "<group>"; };
+		4552245918FCAD5800AC0D5D /* SCUDefaultCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCUDefaultCollectionViewCell.h; sourceTree = "<group>"; };
+		4552245A18FCAD5800AC0D5D /* SCUDefaultCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCUDefaultCollectionViewCell.m; sourceTree = "<group>"; };
+		4552245B18FCAD5800AC0D5D /* SCUReorderableCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCUReorderableCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		4552245C18FCAD5800AC0D5D /* SCUReorderableCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCUReorderableCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		45AFD69018F8362B0036EAB3 /* LXReorderableCollectionViewFlowLayoutPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LXReorderableCollectionViewFlowLayoutPrivate.h; path = ../LXReorderableCollectionViewFlowLayout/LXReorderableCollectionViewFlowLayoutPrivate.h; sourceTree = "<group>"; };
 		927A97F31736CA0E00539F5E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AB0E97C2161B4BEC005498A0 /* LXRCVFL Example using Storyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LXRCVFL Example using Storyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,9 +82,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4552245518FCAD5800AC0D5D /* ReorderableCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				4552245618FCAD5800AC0D5D /* defualtDeleteBotton.png */,
+				4552245718FCAD5800AC0D5D /* SCUCollectionViewController.h */,
+				4552245818FCAD5800AC0D5D /* SCUCollectionViewController.m */,
+				4552245918FCAD5800AC0D5D /* SCUDefaultCollectionViewCell.h */,
+				4552245A18FCAD5800AC0D5D /* SCUDefaultCollectionViewCell.m */,
+				4552245B18FCAD5800AC0D5D /* SCUReorderableCollectionViewFlowLayout.h */,
+				4552245C18FCAD5800AC0D5D /* SCUReorderableCollectionViewFlowLayout.m */,
+			);
+			path = ReorderableCollectionView;
+			sourceTree = "<group>";
+		};
 		AB0E97B7161B4BEC005498A0 = {
 			isa = PBXGroup;
 			children = (
+				4552245518FCAD5800AC0D5D /* ReorderableCollectionView */,
 				AB0E97CC161B4BEC005498A0 /* LXRCVFL Example using Storyboard */,
 				AB0E97EF161B52C1005498A0 /* Library */,
 				AB0E97F7161B5DC6005498A0 /* Content */,
@@ -194,6 +220,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4552245D18FCAD5800AC0D5D /* defualtDeleteBotton.png in Resources */,
 				AB0E97D1161B4BEC005498A0 /* InfoPlist.strings in Resources */,
 				AB0E97D9161B4BEC005498A0 /* Default.png in Resources */,
 				AB0E97DB161B4BEC005498A0 /* Default@2x.png in Resources */,
@@ -210,12 +237,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4552245F18FCAD5800AC0D5D /* SCUDefaultCollectionViewCell.m in Sources */,
+				4552246018FCAD5800AC0D5D /* SCUReorderableCollectionViewFlowLayout.m in Sources */,
 				AB0E97D3161B4BEC005498A0 /* main.m in Sources */,
 				AB0E97D7161B4BEC005498A0 /* AppDelegate.m in Sources */,
 				AB0E97EB161B4C3C005498A0 /* LXCollectionViewController.m in Sources */,
 				AB0E97EE161B525D005498A0 /* PlayingCard.m in Sources */,
 				AB0E97F3161B52D4005498A0 /* LXReorderableCollectionViewFlowLayout.m in Sources */,
 				AB0E97F6161B561F005498A0 /* PlayingCardCell.m in Sources */,
+				4552245E18FCAD5800AC0D5D /* SCUCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

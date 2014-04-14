@@ -9,7 +9,8 @@
 #import "LXCollectionViewController.h"
 #import "PlayingCard.h"
 #import "PlayingCardCell.h"
-
+//#import "SCUReorderableCollectionViewFlowLayout.h"
+#import "SCUDefaultCollectionViewCell.h"
 // LX_LIMITED_MOVEMENT:
 // 0 = Any card can move anywhere
 // 1 = Only Spade/Club can move within same rank
@@ -18,10 +19,32 @@
 
 @implementation LXCollectionViewController
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"picked");
+}
+
 - (void)viewDidLoad {
+    self.isInEditMode = NO;
+
     [super viewDidLoad];
-    
+    if([self.collectionViewLayout isKindOfClass:[SCUReorderableCollectionViewFlowLayout class]])
+    {
+        UIView *blueView = [[ UIView alloc] init ];
+        [blueView setBackgroundColor:[UIColor blueColor]];
+        [((SCUReorderableCollectionViewFlowLayout *)self.collectionViewLayout) setCollectionViewMovingItemPlaceholderView:blueView];
+    }
     self.deck = [self constructsDeck];
+    UIButton* editButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
+    [editButton addTarget:self action:@selector(changeEditMode) forControlEvents:UIControlEventTouchUpInside];
+    [editButton setCenter: self.collectionView.center];
+    [self.collectionView addSubview:editButton];
+}
+
+- (void) changeEditMode
+{
+    self.isInEditMode = !self.isInEditMode;
+    [((SCUReorderableCollectionViewFlowLayout *)self.collectionViewLayout) setEditing:self.isInEditMode];
 }
 
 - (NSMutableArray *)constructsDeck {
@@ -52,7 +75,8 @@
             [newDeck addObject:playingCard];
         }
         
-        // Diamond
+        
+// Diamond
         {
             PlayingCard *playingCard = [[PlayingCard alloc] init];
             playingCard.suit = PlayingCardSuitDiamond;
@@ -78,29 +102,30 @@
     return playingCardCell;
 }
 
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+   [((SCUReorderableCollectionViewFlowLayout *)self.collectionViewLayout) setEditing:self.isInEditMode];
+}
+
+-(BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return !self.isInEditMode;
+}
+
 #pragma mark - LXReorderableCollectionViewDataSource methods
 
-- (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath willMoveToIndexPath:(NSIndexPath *)toIndexPath {
+- (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath willMoveToIndexPath:(NSIndexPath *)toIndexPath
+{
     PlayingCard *playingCard = [self.deck objectAtIndex:fromIndexPath.item];
 
     [self.deck removeObjectAtIndex:fromIndexPath.item];
     [self.deck insertObject:playingCard atIndex:toIndexPath.item];
+    
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath {
-#if LX_LIMITED_MOVEMENT == 1
-    PlayingCard *playingCard = [deck objectAtIndex:indexPath.item];
-    
-    switch (playingCard.suit) {
-        case PlayingCardSuitSpade:
-        case PlayingCardSuitClub:
-            return YES;
-        default:
-            return NO;
-    }
-#else
+
     return YES;
-#endif
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath canMoveToIndexPath:(NSIndexPath *)toIndexPath {
@@ -120,22 +145,49 @@
 #endif
 }
 
+-(BOOL)collectionView:(UICollectionView *)collectionView canEditItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView commitEditingStyle:(SCUReorderableCollectionViewItemEditingStyle)editingStyle forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (editingStyle)
+    {
+        case SCUCollectionViewItemEditingStyleDelete:
+        {
+            [self.deck removeObjectAtIndex:indexPath.item];
+            [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+-(void)collectionView:(UICollectionView*) collectionView addItem:(id)item
+{
+    [self.deck addObject:item];
+    [self.collectionView reloadData];
+}
+
 #pragma mark - LXReorderableCollectionViewDelegateFlowLayout methods
 
 - (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout willBeginDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"will begin drag");
+   // NSLog(@"will begin drag");
 }
 
 - (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout didBeginDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"did begin drag");
+    //NSLog(@"did begin drag");
 }
 
 - (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout willEndDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
-     NSLog(@"will end drag");
+     //NSLog(@"will end drag");
 }
 
 - (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout didEndDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
-     NSLog(@"did end drag");
+    // NSLog(@"did end drag");
 }
 
 @end

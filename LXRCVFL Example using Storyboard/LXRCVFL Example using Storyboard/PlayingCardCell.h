@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SCUDefaultCollectionViewCell.h"
 
 @class PlayingCard;
 
-@interface PlayingCardCell : UICollectionViewCell
+@interface PlayingCardCell : SCUDefaultCollectionViewCell
 
 @property (strong, nonatomic) PlayingCard *playingCard;
 @property (strong, nonatomic) IBOutlet UIImageView *playingCardImageView;
