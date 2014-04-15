@@ -11,6 +11,8 @@
 		4552245E18FCAD5800AC0D5D /* SCUCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4552245818FCAD5800AC0D5D /* SCUCollectionViewController.m */; };
 		4552245F18FCAD5800AC0D5D /* SCUDefaultCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4552245A18FCAD5800AC0D5D /* SCUDefaultCollectionViewCell.m */; };
 		4552246018FCAD5800AC0D5D /* SCUReorderableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4552245C18FCAD5800AC0D5D /* SCUReorderableCollectionViewFlowLayout.m */; };
+		45F23C0E18FD8B85008307D0 /* MainStoryboard~iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45F23C0C18FD8B85008307D0 /* MainStoryboard~iphone.storyboard */; };
+		45F23C1118FD8B8B008307D0 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45F23C0F18FD8B8B008307D0 /* MainStoryboard.storyboard */; };
 		927A97F41736CA0E00539F5E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927A97F31736CA0E00539F5E /* QuartzCore.framework */; };
 		AB0E97C7161B4BEC005498A0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB0E97C6161B4BEC005498A0 /* UIKit.framework */; };
 		AB0E97C9161B4BEC005498A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB0E97C8161B4BEC005498A0 /* Foundation.framework */; };
@@ -21,7 +23,6 @@
 		AB0E97D9161B4BEC005498A0 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AB0E97D8161B4BEC005498A0 /* Default.png */; };
 		AB0E97DB161B4BEC005498A0 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB0E97DA161B4BEC005498A0 /* Default@2x.png */; };
 		AB0E97DD161B4BEC005498A0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB0E97DC161B4BEC005498A0 /* Default-568h@2x.png */; };
-		AB0E97E0161B4BEC005498A0 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB0E97DE161B4BEC005498A0 /* MainStoryboard.storyboard */; };
 		AB0E97EB161B4C3C005498A0 /* LXCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0E97EA161B4C3C005498A0 /* LXCollectionViewController.m */; };
 		AB0E97EE161B525D005498A0 /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0E97ED161B525D005498A0 /* PlayingCard.m */; };
 		AB0E97F3161B52D4005498A0 /* LXReorderableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0E97F2161B52D4005498A0 /* LXReorderableCollectionViewFlowLayout.m */; };
@@ -38,6 +39,8 @@
 		4552245B18FCAD5800AC0D5D /* SCUReorderableCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCUReorderableCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		4552245C18FCAD5800AC0D5D /* SCUReorderableCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCUReorderableCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		45AFD69018F8362B0036EAB3 /* LXReorderableCollectionViewFlowLayoutPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LXReorderableCollectionViewFlowLayoutPrivate.h; path = ../LXReorderableCollectionViewFlowLayout/LXReorderableCollectionViewFlowLayoutPrivate.h; sourceTree = "<group>"; };
+		45F23C0D18FD8B85008307D0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = "en.lproj/MainStoryboard~iphone.storyboard"; sourceTree = "<group>"; };
+		45F23C1018FD8B8B008307D0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		927A97F31736CA0E00539F5E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AB0E97C2161B4BEC005498A0 /* LXRCVFL Example using Storyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LXRCVFL Example using Storyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB0E97C6161B4BEC005498A0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -52,7 +55,6 @@
 		AB0E97D8161B4BEC005498A0 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		AB0E97DA161B4BEC005498A0 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		AB0E97DC161B4BEC005498A0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		AB0E97DF161B4BEC005498A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		AB0E97E9161B4C3C005498A0 /* LXCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXCollectionViewController.h; sourceTree = "<group>"; };
 		AB0E97EA161B4C3C005498A0 /* LXCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXCollectionViewController.m; sourceTree = "<group>"; };
 		AB0E97EC161B525D005498A0 /* PlayingCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCard.h; sourceTree = "<group>"; };
@@ -127,7 +129,8 @@
 		AB0E97CC161B4BEC005498A0 /* LXRCVFL Example using Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				AB0E97DE161B4BEC005498A0 /* MainStoryboard.storyboard */,
+				45F23C0F18FD8B8B008307D0 /* MainStoryboard.storyboard */,
+				45F23C0C18FD8B85008307D0 /* MainStoryboard~iphone.storyboard */,
 				AB0E97D5161B4BEC005498A0 /* AppDelegate.h */,
 				AB0E97D6161B4BEC005498A0 /* AppDelegate.m */,
 				AB0E97E9161B4C3C005498A0 /* LXCollectionViewController.h */,
@@ -220,8 +223,9 @@
 				AB0E97D1161B4BEC005498A0 /* InfoPlist.strings in Resources */,
 				AB0E97D9161B4BEC005498A0 /* Default.png in Resources */,
 				AB0E97DB161B4BEC005498A0 /* Default@2x.png in Resources */,
+				45F23C0E18FD8B85008307D0 /* MainStoryboard~iphone.storyboard in Resources */,
 				AB0E97DD161B4BEC005498A0 /* Default-568h@2x.png in Resources */,
-				AB0E97E0161B4BEC005498A0 /* MainStoryboard.storyboard in Resources */,
+				45F23C1118FD8B8B008307D0 /* MainStoryboard.storyboard in Resources */,
 				AB0E97F8161B5DC6005498A0 /* Content in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,20 +252,28 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		45F23C0C18FD8B85008307D0 /* MainStoryboard~iphone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				45F23C0D18FD8B85008307D0 /* en */,
+			);
+			name = "MainStoryboard~iphone.storyboard";
+			sourceTree = "<group>";
+		};
+		45F23C0F18FD8B8B008307D0 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				45F23C1018FD8B8B008307D0 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
 		AB0E97CF161B4BEC005498A0 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				AB0E97D0161B4BEC005498A0 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		AB0E97DE161B4BEC005498A0 /* MainStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AB0E97DF161B4BEC005498A0 /* en */,
-			);
-			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
