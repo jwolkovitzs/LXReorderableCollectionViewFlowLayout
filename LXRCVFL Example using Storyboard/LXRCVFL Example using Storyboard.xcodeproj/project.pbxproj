@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		450BFD4718FB124F008B32C6 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 450BFD4618FB124F008B32C6 /* Reveal.framework */; };
 		4552245D18FCAD5800AC0D5D /* defualtDeleteBotton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4552245618FCAD5800AC0D5D /* defualtDeleteBotton.png */; };
 		4552245E18FCAD5800AC0D5D /* SCUCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4552245818FCAD5800AC0D5D /* SCUCollectionViewController.m */; };
 		4552245F18FCAD5800AC0D5D /* SCUDefaultCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4552245A18FCAD5800AC0D5D /* SCUDefaultCollectionViewCell.m */; };
@@ -31,7 +30,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		450BFD4618FB124F008B32C6 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		4552245618FCAD5800AC0D5D /* defualtDeleteBotton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defualtDeleteBotton.png; sourceTree = "<group>"; };
 		4552245718FCAD5800AC0D5D /* SCUCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCUCollectionViewController.h; sourceTree = "<group>"; };
 		4552245818FCAD5800AC0D5D /* SCUCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCUCollectionViewController.m; sourceTree = "<group>"; };
@@ -73,7 +71,6 @@
 			files = (
 				927A97F41736CA0E00539F5E /* QuartzCore.framework in Frameworks */,
 				AB0E97C7161B4BEC005498A0 /* UIKit.framework in Frameworks */,
-				450BFD4718FB124F008B32C6 /* Reveal.framework in Frameworks */,
 				AB0E97C9161B4BEC005498A0 /* Foundation.framework in Frameworks */,
 				AB0E97CB161B4BEC005498A0 /* CoreGraphics.framework in Frameworks */,
 			);
@@ -119,7 +116,6 @@
 		AB0E97C5161B4BEC005498A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				450BFD4618FB124F008B32C6 /* Reveal.framework */,
 				927A97F31736CA0E00539F5E /* QuartzCore.framework */,
 				AB0E97C6161B4BEC005498A0 /* UIKit.framework */,
 				AB0E97C8161B4BEC005498A0 /* Foundation.framework */,
@@ -293,7 +289,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -315,7 +311,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -326,20 +322,14 @@
 		AB0E97E7161B4BEC005498A0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LXRCVFL Example using Storyboard/LXRCVFL Example using Storyboard-Prefix.pch";
 				INFOPLIST_FILE = "LXRCVFL Example using Storyboard/LXRCVFL Example using Storyboard-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-framework",
-					Reveal,
-				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -347,20 +337,14 @@
 		AB0E97E8161B4BEC005498A0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LXRCVFL Example using Storyboard/LXRCVFL Example using Storyboard-Prefix.pch";
 				INFOPLIST_FILE = "LXRCVFL Example using Storyboard/LXRCVFL Example using Storyboard-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-framework",
-					Reveal,
-				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

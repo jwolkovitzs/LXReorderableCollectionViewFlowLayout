@@ -75,7 +75,6 @@
             [newDeck addObject:playingCard];
         }
         
-        
 // Diamond
         {
             PlayingCard *playingCard = [[PlayingCard alloc] init];

@@ -7,11 +7,12 @@
 //
 
 #import "AppDelegate.h"
-
+#import <dlfcn.h>
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self loadReveal];
     // Override point for customization after application launch.
     return YES;
 }
@@ -41,6 +42,34 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+- (void)loadReveal
+{
+#ifdef DEBUG
+    NSString *dyLibPath = @"/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/libReveal.dylib";
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:dyLibPath isDirectory:NULL])
+    {
+        NSLog(@"Loading dynamic library: %@", dyLibPath);
+        
+        void *revealLib = NULL;
+        revealLib = dlopen([dyLibPath cStringUsingEncoding:NSUTF8StringEncoding], RTLD_NOW);
+        
+        if (revealLib == NULL)
+        {
+            char *error = dlerror();
+            NSLog(@"Reveal Library %@ failed to load with error: %s", [dyLibPath lastPathComponent], error);
+        }
+    }
+    else
+    {
+        NSLog(@"Not loading Reveal framework!");
+    }
+#else
+    NSLog(@"Skipping Reveal plugin for Release target.");
+#endif
 }
 
 @end
