@@ -169,7 +169,6 @@
 - (void)touchesEnded
 {
     NSIndexPath *currentIndexPath = self.selectedItemIndexPath;
-    [self.collectionViewMovingItemPlaceholderView removeFromSuperview];
     if (currentIndexPath)
     {
         if ([self.delegate respondsToSelector:@selector(collectionView:layout:willEndDraggingItemAtIndexPath:)])
@@ -200,7 +199,7 @@
              {
                  [self.delegate collectionView:self.collectionView layout:self didEndDraggingItemAtIndexPath:currentIndexPath];
              }
-             
+             [self.collectionViewMovingItemPlaceholderView removeFromSuperview];
          }];
         [self removeHiddenCells];
         [self invalidateLayout];
@@ -217,6 +216,7 @@
             if (currentIndexPath)
             {
                 [self touchesBegan:currentIndexPath];
+                self.collectionView.scrollEnabled = NO;
             }
         } break;
         case UIGestureRecognizerStateChanged:
@@ -231,6 +231,7 @@
         case UIGestureRecognizerStateEnded:
         {
             [self touchesEnded];
+            self.collectionView.scrollEnabled = YES;
         }
             break;
         case UIGestureRecognizerStatePossible:

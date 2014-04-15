@@ -43,6 +43,7 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
 @property (assign, nonatomic) CGPoint currentViewCenter;
 @property (assign, nonatomic) CGPoint panTranslationInCollectionView;
 @property (strong, nonatomic) CADisplayLink *displayLink;
+@property (nonatomic) CGPoint fingerPoint;
 
 - (void)setDefaults;
 - (void)setupCollectionView;

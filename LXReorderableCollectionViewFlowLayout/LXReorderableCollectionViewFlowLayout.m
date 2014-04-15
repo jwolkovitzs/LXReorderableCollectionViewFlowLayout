@@ -42,6 +42,8 @@
 - (id<LXReorderableCollectionViewDataSource>)dataSource;
 - (id<LXReorderableCollectionViewDelegateFlowLayout>)delegate;
 
+@property (nonatomic) float distanceIntoTrigerZone;
+
 @end
 
 @implementation LXReorderableCollectionViewFlowLayout
@@ -354,17 +356,21 @@
     switch (gestureRecognizer.state) {
         case UIGestureRecognizerStateBegan:
         case UIGestureRecognizerStateChanged: {
+            self.fingerPoint = [gestureRecognizer locationInView:self.collectionView];
             self.panTranslationInCollectionView = [gestureRecognizer translationInView:self.collectionView];
-            CGPoint viewCenter = self.currentView.center = LXS_CGPointAdd(self.currentViewCenter, self.panTranslationInCollectionView);
+            self.currentView.center = LXS_CGPointAdd(self.currentViewCenter, self.panTranslationInCollectionView);
             
             [self invalidateLayoutIfNecessary];
             
             switch (self.scrollDirection) {
                 case UICollectionViewScrollDirectionVertical: {
-                    if (viewCenter.y < (CGRectGetMinY(self.collectionView.bounds) + self.scrollingTriggerEdgeInsets.top)) {
+                    if (self.fingerPoint.y < (CGRectGetMinY(self.collectionView.bounds) + self.scrollingTriggerEdgeInsets.top)) {
+                        self.distanceIntoTrigerZone = ((CGRectGetMinY(self.collectionView.bounds) + self.scrollingTriggerEdgeInsets.top) - self.fingerPoint.y) / self.scrollingTriggerEdgeInsets.top;
                         [self setupScrollTimerInDirection:LXScrollingDirectionUp];
+                        
                     } else {
-                        if (viewCenter.y > (CGRectGetMaxY(self.collectionView.bounds) - self.scrollingTriggerEdgeInsets.bottom)) {
+                        if (self.fingerPoint.y > (CGRectGetMaxY(self.collectionView.bounds) - self.scrollingTriggerEdgeInsets.bottom)) {
+                            self.distanceIntoTrigerZone = (self.fingerPoint.y - (CGRectGetMaxY(self.collectionView.bounds) - self.scrollingTriggerEdgeInsets.bottom)) / self.scrollingTriggerEdgeInsets.bottom;
                             [self setupScrollTimerInDirection:LXScrollingDirectionDown];
                         } else {
                             [self invalidatesScrollTimer];
@@ -372,10 +378,12 @@
                     }
                 } break;
                 case UICollectionViewScrollDirectionHorizontal: {
-                    if (viewCenter.x < (CGRectGetMinX(self.collectionView.bounds) + self.scrollingTriggerEdgeInsets.left)) {
+                    if (self.fingerPoint.x < (CGRectGetMinX(self.collectionView.bounds) + self.scrollingTriggerEdgeInsets.left)) {
+                        self.distanceIntoTrigerZone = ((CGRectGetMinX(self.collectionView.bounds) + self.scrollingTriggerEdgeInsets.right) - self.fingerPoint.x) / self.scrollingTriggerEdgeInsets.right;
                         [self setupScrollTimerInDirection:LXScrollingDirectionLeft];
                     } else {
-                        if (viewCenter.x > (CGRectGetMaxX(self.collectionView.bounds) - self.scrollingTriggerEdgeInsets.right)) {
+                        if (self.fingerPoint.x > (CGRectGetMaxX(self.collectionView.bounds) - self.scrollingTriggerEdgeInsets.right)) {
+                            self.distanceIntoTrigerZone = (self.fingerPoint.x - (CGRectGetMaxY(self.collectionView.bounds) - self.scrollingTriggerEdgeInsets.left)) / self.scrollingTriggerEdgeInsets.left;
                             [self setupScrollTimerInDirection:LXScrollingDirectionRight];
                         } else {
                             [self invalidatesScrollTimer];
@@ -392,6 +400,11 @@
             // Do nothing...
         } break;
     }
+}
+
+- (CGFloat)scrollingSpeed
+{
+    return _scrollingSpeed * self.distanceIntoTrigerZone;
 }
 
 #pragma mark - Target/Action helper methods
